@@ -29,9 +29,9 @@ const BuildTOC = (text, opts) => {
   return wrapper
     ? `<${wrapper} class="${wrapperClass}" role="navigation" aria-labelledby="fr-summary-title">
         <p class="fr-summary__title" id="fr-summary-title">${wrapperLabel}</p>
-        ${BuildList(headings, ul, flat)}
+        ${BuildList(headings, ul)}
         </${wrapper}>`
-    : BuildList(headings, ul, flat)
+    : BuildList(headings, ul)
 }
 
 module.exports = BuildTOC
