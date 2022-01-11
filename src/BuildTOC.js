@@ -10,11 +10,10 @@ const defaults = {
   wrapperClass: 'toc',
   wrapperLabel: undefined,
   ul: false,
-  flat: false,
 }
 
 const BuildTOC = (text, opts) => {
-  const {tags, wrapper, wrapperClass, wrapperLabel, ul, flat} = ParseOptions(
+  const {tags, wrapper, wrapperClass, wrapperLabel, ul} = ParseOptions(
     opts,
     defaults
   )
@@ -26,8 +25,6 @@ const BuildTOC = (text, opts) => {
   if (headings.length === 0) {
     return undefined
   }
-
-//const label = wrapperLabel
 
   return wrapper
     ? `<${wrapper} class="${wrapperClass}" role="navigation" aria-labelledby="fr-summary-title">
