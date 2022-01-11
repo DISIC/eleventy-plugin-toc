@@ -1,6 +1,6 @@
 # eleventy-plugin-toc
 
-This Eleventy plugin will generate a TOC from page content using an Eleventy filter.
+This Eleventy plugin will generate a TOC from page content using an Eleventy filter **with a DSFR touch**
 
 ## Default Options
 
@@ -10,7 +10,6 @@ This Eleventy plugin will generate a TOC from page content using an Eleventy fil
   wrapper: 'nav',           // element to put around the root `ol`/`ul`
   wrapperClass: 'toc',      // class for the element around the root `ol`/`ul`
   ul: false,                // if to use `ul` instead of `ol`
-  flat: false,              // if subheadings should appear as child of parent or as a sibling
 }
 ```
 
@@ -102,15 +101,6 @@ If you want to conditionally render a wrapper element, the filter will return `u
 {% endif %}
 ```
 
-### 5. Override default options if necessary
-
-Pass a stringified JSON object (must be `JSON.parse()`-able) as an option for in your template. Because this is an object, you only need to include the key-value pairs you need to override; [defaults](#default-options) will be preserved.
-
-```liquid
-<aside>
-  {{ content | toc: '{"tags":["h2","h3"],"wrapper":"div","wrapperClass":"content-tableau"}' }}
-</aside>
-```
 
 ## Options
 
@@ -121,8 +111,4 @@ Pass a stringified JSON object (must be `JSON.parse()`-able) as an option for in
 | wrapperClass | `'toc'` | string | `class` on element wrapping toc lists |
 | wrapperLabel | `undefined` | string | `aria-label` on element wrapping toc lists |
 | ul | `false` | boolean | lists are `ul` if true, `ol` if `false` |
-| flat | `false` | boolean | use flat list if `true`; use nested lists if false |
 
-## Roadmap
-
-- [ ] Some tests would be nice
