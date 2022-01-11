@@ -27,12 +27,13 @@ const BuildTOC = (text, opts) => {
     return undefined
   }
 
-  const label = wrapperLabel ? `aria-label="${wrapperLabel}"` : ''
+//const label = wrapperLabel
 
   return wrapper
-    ? `<${wrapper} class="${wrapperClass}" ${label}>
+    ? `<${wrapper} class="${wrapperClass}" ${wrapperLabel}  'role="navigation" aria-labelledby="fr-summary-title"'>
+        <p class="fr-summary__title" id="fr-summary-title">${wrapperClass}</p>
         ${BuildList(headings, ul, flat)}
-      </${wrapper}>`
+        </${wrapper}>`
     : BuildList(headings, ul, flat)
 }
 
