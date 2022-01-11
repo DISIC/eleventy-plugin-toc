@@ -30,8 +30,8 @@ const BuildTOC = (text, opts) => {
 //const label = wrapperLabel
 
   return wrapper
-    ? `<${wrapper} class="${wrapperClass}" ${wrapperLabel}  'role="navigation" aria-labelledby="fr-summary-title"'>
-        <p class="fr-summary__title" id="fr-summary-title">${wrapperClass}</p>
+    ? `<${wrapper} class="${wrapperClass}" role="navigation" aria-labelledby="fr-summary-title">
+        <p class="fr-summary__title" id="fr-summary-title">${wrapperLabel}</p>
         ${BuildList(headings, ul, flat)}
         </${wrapper}>`
     : BuildList(headings, ul, flat)
