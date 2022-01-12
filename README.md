@@ -8,8 +8,9 @@ This Eleventy plugin will generate a TOC from page content using an Eleventy fil
 {
   tags: ['h2', 'h3', 'h4'], // which heading tags are selected headings must each have an ID attribute
   wrapper: 'nav',           // element to put around the root `ol`/`ul`
-  wrapperClass: 'toc',      // class for the element around the root `ol`/`ul`
-  ul: false,                // if to use `ul` instead of `ol`
+  wrapperClass: 'fr-summary',      // class for the element around the root `ol`/`ul`
+  wrapperLabel: 'Sommaire',      // summary's label
+  ul: false,                // if to use `ul` instead of `ol`. But `ol` is definitly better !
 }
 ```
 
@@ -61,7 +62,7 @@ module.exports = function (eleventyConfig) {
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginTOC, {
     tags: ['h2', 'h3'],
-    wrapper: 'div'
+    wrapper: 'nav'
   })
 }
 ```
@@ -79,36 +80,13 @@ Because Eleventy only provides the `content` variable to layout templates (not t
 </aside>
 ```
 
-If you're using Nunjucks, include the `safe` filter:
-
-```njk
-<article>
-  {{ content | safe }}
-</article>
-<aside>
-  {{ content | toc | safe }}
-</aside>
-```
-
-If you want to conditionally render a wrapper element, the filter will return `undefined` when no markup is generated:
-
-
-```liquid
-{% if content | toc %}
-  <aside>
-    {{ content | toc }}
-  </aside>
-{% endif %}
-```
-
-
 ## Options
 
 | Name | Default Value | Type | Purpose |
 | --- | --- | --- | --- |
 | tags | `['h2', 'h3', 'h4']` | array of strings | which heading tags are used to generate the table of contents |
 | wrapper | `'nav'` | string | tag of element wrapping toc lists; `''` removes wrapper element |
-| wrapperClass | `'toc'` | string | `class` on element wrapping toc lists |
-| wrapperLabel | `undefined` | string | `aria-label` on element wrapping toc lists |
+| wrapperClass | `'fr-summary'` | string | `class` on element wrapping toc lists |
+| wrapperLabel | `Sommaire` | string | `p` on element before toc lists |
 | ul | `false` | boolean | lists are `ul` if true, `ol` if `false` |
 
